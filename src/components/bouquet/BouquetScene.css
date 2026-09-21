@@ -1,0 +1,175 @@
+.bouquet-scene {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: var(--bg-warm);
+  overflow: hidden;
+  transition: background 2s ease;
+}
+
+.bouquet-scene.revealed {
+  background: linear-gradient(180deg, #2C2416 0%, #3D2E1A 50%, #4A3820 100%);
+}
+
+.bouquet-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bouquet-wrapper {
+  position: relative;
+  width: 400px;
+  height: 500px;
+  max-width: 90vw;
+  max-height: 70vh;
+  transition: transform 2s ease-out;
+}
+
+.bouquet-wrapper.zoomed {
+  transform: scale(1.1);
+}
+
+.stem {
+  position: absolute;
+  bottom: 0;
+  width: 10px;
+  transform-origin: bottom center;
+}
+
+.leaf {
+  position: absolute;
+  transform-origin: center bottom;
+  transition: opacity 0.6s ease-out;
+}
+
+.petal-fall-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.falling-petal {
+  position: absolute;
+  width: 15px;
+  height: 20px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  opacity: 0;
+  animation: petalFall linear forwards;
+}
+
+@keyframes petalFall {
+  0% { opacity: 0.8; transform: translateY(0) rotate(0deg); }
+  100% { opacity: 0; transform: translateY(100vh) rotate(360deg); }
+}
+
+.golden-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.golden-particle {
+  position: absolute;
+  background: radial-gradient(circle, #FFD700 0%, #D4AF37 50%, transparent 100%);
+  border-radius: 50%;
+  opacity: 0;
+  animation: goldenFloat ease-in-out infinite;
+}
+
+@keyframes goldenFloat {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 0.8; transform: scale(1); }
+}
+
+.interaction-popup {
+  position: fixed;
+  pointer-events: none;
+  z-index: 100;
+  animation: popUpNew 3.5s ease-out forwards;
+}
+
+@keyframes popUpNew {
+  0% { 
+    opacity: 0; 
+    transform: translateY(15px) scale(0.7);
+  }
+  10% { 
+    opacity: 1; 
+    transform: translateY(-10px) scale(1.05);
+  }
+  15% { 
+    opacity: 1; 
+    transform: translateY(-15px) scale(1);
+  }
+  85% { 
+    opacity: 1; 
+    transform: translateY(-15px) scale(1);
+  }
+  100% { 
+    opacity: 0; 
+    transform: translateY(-35px) scale(1);
+  }
+}
+
+.interaction-popup span {
+  background: linear-gradient(135deg, rgba(254, 243, 199, 0.98) 0%, rgba(253, 230, 138, 0.95) 100%);
+  color: #92400E;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.audio-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(254, 243, 199, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(254, 243, 199, 0.2);
+  color: var(--cream);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 50;
+}
+
+.audio-button:hover {
+  background: rgba(254, 243, 199, 0.25);
+  transform: scale(1.1);
+}
+
+.audio-button.active {
+  background: rgba(245, 158, 11, 0.3);
+  border-color: var(--yellow-gold);
+}
+
+@media (max-width: 600px) {
+  .bouquet-wrapper {
+    width: 300px;
+    height: 400px;
+  }
+  
+  .audio-button {
+    bottom: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+  }
+}

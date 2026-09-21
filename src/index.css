@@ -1,0 +1,96 @@
+:root {
+  /* Paleta de colores */
+  --yellow-warm: #FCD34D;
+  --yellow-gold: #F59E0B;
+  --cream: #FEF3C7;
+  --green-natural: #059669;
+  --green-dark: #047857;
+  --white-warm: #FFFCF5;
+  --gold-accent: #D4AF37;
+  
+  /* Fondos */
+  --bg-dark: #1F1A17;
+  --bg-warm: linear-gradient(135deg, #2C2416 0%, #1F1A17 50%, #2A1F14 100%);
+  
+  /* Sombras */
+  --shadow-glow: 0 0 40px rgba(245, 158, 11, 0.3);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg-warm);
+  color: var(--white-warm);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* Utilidades de animación */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.3; }
+}
+
+/* Transiciones suaves */
+.fade-in {
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+.fade-in-up {
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+/* Clip path para pétalos */
+.petal-clip {
+  clip-path: ellipse(40% 100% at 50% 100%);
+}
+
+/* Scrollbar minimalista */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--yellow-gold);
+  border-radius: 3px;
+}

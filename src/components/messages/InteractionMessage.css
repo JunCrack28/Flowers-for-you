@@ -1,0 +1,112 @@
+.interaction-message {
+  position: fixed;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0;
+  transform: scale(0.7) translateY(10px);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.interaction-message.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+/* Burbuja del mensaje */
+.message-bubble {
+  position: relative;
+  background: linear-gradient(135deg, rgba(254, 243, 199, 0.95) 0%, rgba(253, 230, 138, 0.92) 100%);
+  border-radius: 20px;
+  padding: 14px 22px;
+  box-shadow: 
+    0 10px 35px rgba(0, 0, 0, 0.25),
+    0 0 1px rgba(255, 255, 255, 0.5) inset,
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  max-width: 220px;
+  animation: subtleFloat 3s ease-in-out infinite;
+}
+
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.message-content {
+  font-size: 0.95rem;
+  color: #92400E;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  text-align: center;
+  font-family: 'Georgia', serif;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* Pointer/flecha pequeña que apunta a la flor */
+.message-pointer {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid rgba(254, 243, 199, 0.95);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Efecto de hover - se puede tocar */
+.interaction-message.visible:hover .message-bubble {
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.3),
+    0 0 1px rgba(255, 255, 255, 0.5) inset,
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .message-bubble {
+    padding: 12px 18px;
+    border-radius: 18px;
+    max-width: 180px;
+  }
+
+  .message-content {
+    font-size: 0.9rem;
+  }
+
+  .message-pointer {
+    border-left-width: 6px;
+    border-right-width: 6px;
+    border-top-width: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .message-bubble {
+    padding: 10px 16px;
+    border-radius: 16px;
+    max-width: 150px;
+  }
+
+  .message-content {
+    font-size: 0.85rem;
+  }
+
+  .message-pointer {
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 7px;
+  }
+}
