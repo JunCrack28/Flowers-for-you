@@ -22,7 +22,7 @@ interface PopupMessage {
   flowerY: number
 }
 
-export function BouquetScene({ onComplete, stage, showAgain }: BouquetSceneProps) {
+export function BouquetScene({ onComplete, stage }: BouquetSceneProps) {
   const [isRevealed, setIsRevealed] = useState(false)
   const [isZoomed, setIsZoomed] = useState(false)
   const [messages, setMessages] = useState<PopupMessage[]>([])
@@ -101,7 +101,7 @@ export function BouquetScene({ onComplete, stage, showAgain }: BouquetSceneProps
               rotation={leaf.rotation}
               scale={leaf.scale}
               delay={leaf.delay}
-              isVisible={stage !== 'intro'}
+              isVisible={stage === 'opening' || stage === 'bouquet' || stage === 'complete'}
             />
           ))}
 
@@ -110,7 +110,7 @@ export function BouquetScene({ onComplete, stage, showAgain }: BouquetSceneProps
             <GrowingFlower
               key={flower.id}
               flower={flower}
-              isVisible={stage !== 'intro'}
+              isVisible={stage === 'opening' || stage === 'bouquet' || stage === 'complete'}
               onInteract={handleFlowerInteract}
               stemDelay={0}
               bloomDelay={1200}

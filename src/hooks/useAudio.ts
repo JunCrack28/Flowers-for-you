@@ -7,7 +7,7 @@ export function useAudio(enabled: boolean) {
 
   useEffect(() => {
     if (!audioRef.current) {
-      audioRef.current = new Audio('/god-willing.mp3')
+      audioRef.current = new Audio(`${import.meta.env.BASE_URL}god-willing.mp3`)
       audioRef.current.loop = true
       audioRef.current.volume = 0.5
       audioRef.current.preload = 'metadata'

@@ -34,8 +34,9 @@ export function Flower({ flower, isVisible, onInteract }: FlowerProps) {
   const handleClick = (e: React.MouseEvent | React.TouchEvent) => {
     e.stopPropagation()
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
-    const x = (e.clientX || (e as React.TouseEvent).touches?.[0]?.clientX) - rect.left
-    const y = (e.clientY || (e as React.TouseEvent).touches?.[0]?.clientY) - rect.top
+    const point = 'changedTouches' in e ? e.changedTouches[0] : e
+    const x = point.clientX - rect.left
+    const y = point.clientY - rect.top
     
     // Crear partículas al hacer clic
     const newParticles = Array.from({ length: 5 }, (_, i) => ({

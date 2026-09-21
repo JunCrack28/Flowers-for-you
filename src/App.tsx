@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 import { Intro } from './components/intro/Intro'
 import { BouquetScene } from './components/bouquet/BouquetScene'
 import { FinalMessage } from './components/messages/FinalMessage'
